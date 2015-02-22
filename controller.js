@@ -7,8 +7,8 @@
 
  var todoController = angular.module('todoController', []);
  
- todoController.controller('todoController', ['$scope', 
-  function($scope) {
+ todoController.controller('todoController', ['$scope',  '$filter',
+  function($scope, $filter) {
 	$scope.tasks = [
 		{'title': 'Task 1',
 		 'done': false},
@@ -29,7 +29,11 @@
 		var index = $scope.tasks.indexOf(item)
 		$scope.tasks.splice(index, 1);   
 	};
-
+	
+	$scope.removeChecked = function () {
+		$scope.tasks = $filter('filter')($scope.tasks, {done: false});
+	};
+	
   }]);
   
   angular.module('todoFilters', []).filter('checked', function() {
