@@ -10,12 +10,12 @@
  todoController.controller('todoController', ['$scope',  '$filter',
   function($scope, $filter) {
 	$scope.tasks = [
-		{'title': 'Task 1',
+		{'title': 'Read Tutorials',
+		 'done': true},
+		{'title': 'Learn AngularJS',
 		 'done': false},
-		{'title': 'Task 2',
-		 'done': false},
-		{'title': 'Task 3',
-		 'done': true}
+		{'title': 'Create app',
+		 'done': false}
 	  ];
 	
 	$scope.todoText = '';

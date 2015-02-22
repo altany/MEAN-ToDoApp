@@ -18,7 +18,7 @@
 	</h2>
 	<div  class="form-inline">
 	<ul class="list-group">
-		<li ng-repeat="task in tasks" class="list-group-item {{task.done | checked}}">
+		<li ng-repeat="task in tasks | orderBy:'done'" class="list-group-item {{task.done | checked}}">
 			<span class="checkbox">
 				<label>
 				<input type="checkbox" ng-model="task.done"/>
