@@ -2,7 +2,7 @@
  
  var todoApp = angular.module('todoApp', [
   'todoController',
-  'phonecatFilters'
+  'todoFilters'
 ]);
 
  var todoController = angular.module('todoController', []);
@@ -17,21 +17,28 @@
 		{'title': 'Task 3',
 		 'done': true}
 	  ];
-
-	  $scope.todoAdd = function () {
+	
+	$scope.todoText = '';
+	
+	$scope.todoAdd = function () {
 		$scope.tasks.push({title:$scope.todoText, done:false});
 		$scope.todoText = '';
-	  };
-	  
-	  $scope.todoRemove = function (item) {
+	};
+
+	$scope.todoRemove = function (item) {
 		var index = $scope.tasks.indexOf(item)
 		$scope.tasks.splice(index, 1);   
-	  };
-  
+	};
+
   }]);
   
-  angular.module('phonecatFilters', []).filter('checked', function() {
-  return function(input) {
-    return input ? 'list-group-item-success' : '';
-  };
-});
+  angular.module('todoFilters', []).filter('checked', function() {
+	  return function(input) {
+		return input ? 'list-group-item-success' : '';
+	  };
+	}).filter('empty', function() {
+	  return function(input) {
+		return input.length==0 ? 'disabled' : '';
+	  };
+	});
+	

@@ -12,30 +12,27 @@
 </head>
 <body>
 <div id="todoWrapper" ng-controller="todoController">
-<h2>You have 
-<span ng-show="tasks.length>0">{{(tasks | filter:{done:false}).length}}/{{tasks.length}}  unfinished tasks</span>
-<span ng-show="tasks.length==0"> no tasks</span>
-</h2>
-<div  class="form-inline">
-<ul class="list-group">
-	<li ng-repeat="task in tasks" class="list-group-item {{task.done | checked}}">
-		<span class="checkbox">
-			<label>
-			<input type="checkbox" ng-model="task.done"/>
-			<span>{{task.title}}</span>
-			</label>
-		</span>
-		<span class="btn btn-danger btn-xs glyphicon glyphicon-remove pull-right" ng-click="todoRemove(item)"></span> <!-- {{task.done | checkmark }} -->
-	</li>
-</ul>
+	<h2>You have 
+	<span ng-show="tasks.length>0">{{(tasks | filter:{done:false}).length}}/{{tasks.length}}  unfinished tasks</span>
+	<span ng-show="tasks.length==0"> no tasks</span>
+	</h2>
+	<div  class="form-inline">
+	<ul class="list-group">
+		<li ng-repeat="task in tasks" class="list-group-item {{task.done | checked}}">
+			<span class="checkbox">
+				<label>
+				<input type="checkbox" ng-model="task.done"/>
+				<span>{{task.title}}</span>
+				</label>
+			</span>
+			<span class="btn btn-danger btn-xs glyphicon glyphicon-remove pull-right" ng-click="todoRemove(item)"></span>
+		</li>
+	</ul>
 
-<input type="text" class="form-control" placeholder="I want to..." ng-model="todoText" ng-model-instant />
-<button class="btn btn-success" ng-click="todoAdd()">Add</button>
+	<input type="text" class="form-control" placeholder="I want to..." ng-model="todoText" />
+	<button class="btn btn-success {{todoText | empty}}" ng-click="todoAdd()">Add</button>
 
-</div>
-  
- 
-
+	</div>
 </div>
 </body>
 </html>
