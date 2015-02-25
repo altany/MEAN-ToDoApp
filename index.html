@@ -6,33 +6,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script src="https://code.angularjs.org/1.4.0-beta.4/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.4.0-beta.4/angular.min.js"></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+	<script src="app.js"></script>
 	<script src="controller.js"></script>
+	
 	<link href="style.css" rel="stylesheet">
 </head>
 <body>
-<div id="todoWrapper" ng-controller="todoController">
-	<h2>You have 
-	<span ng-show="tasks.length>0">{{(tasks | filter:{done:false}).length}}/{{tasks.length}}  unfinished tasks</span>
-	<span ng-show="tasks.length==0"> no tasks</span>
-	</h2>
-	<div  class="form-inline">
-	<ul class="list-group">
-		<li ng-repeat="task in tasks | orderBy:'done'" class="list-group-item {{task.done | checked}}">
-			<span class="checkbox">
-				<label>
-				<input type="checkbox" ng-model="task.done"/>
-				<span>{{task.title}}</span>
-				</label>
-			</span>
-			<span class="btn btn-danger btn-xs glyphicon glyphicon-remove pull-right" ng-click="todoRemove(item)"></span>
-		</li>
-	</ul>
+<div ng-view></div>
 
-	<input type="text" class="form-control" placeholder="I want to..." ng-model="todoText" />
-	<button class="btn btn-success {{todoText | empty}}" ng-click="todoAdd()">Add</button>
-	<button class="btn btn-danger pull-right {{ (tasks | filter:{done:true}) | empty}}" ng-click="removeChecked()">Remove checked</button>
-	</div>
-</div>
 </body>
 </html>

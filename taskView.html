@@ -1,0 +1,16 @@
+<form id="taskView" name="newTask">
+	<div class="form-group">
+		<label for="taskTitle">Title</label>
+		<input type="text" class="form-control" id="taskTitle" ng-model="task.title" ng-required="true" />
+	</div>
+	<div class="form-group">
+		<label for="taskDeadline">Deadline</label>
+		<input type="text" class="form-control" id="taskDeadline"  ng-model="task.deadline"/>
+	</div>
+	<div class="form-group">
+		<label for="taskLocation">Location</label>
+		<input type="text" class="form-control" id="taskLocation" ng-model="task.location" />
+	</div>
+	
+	<button class="btn btn-success center-block" ng-click="todoSave(newTask)">Save</button>
+</form>
