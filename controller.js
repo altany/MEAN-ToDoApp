@@ -38,6 +38,13 @@ todoController.service('tasksService', function ($http) {
         }
 		return [{}]
     }
+	this.delete = function (id) {
+        for (var i in tasks) {
+            if (tasks[i].id == id) {
+                tasks.splice(i, 1);
+            }
+        }
+    }
 	this.save = function (task) {
         if (task.id == null) {
             //if this is new contact, add it in contacts array
@@ -66,9 +73,8 @@ todoController.controller('TaskListCtrl', function($scope, $filter, $location, $
 		$location.path('/task/new');
 	};
 
-	$scope.todoRemove = function (item) {
-		var index = $scope.tasks.indexOf(item)
-		$scope.tasks.splice(index, 1);   
+	$scope.todoRemove = function (id) {
+		tasksService.delete(id);  
 	};
 	
 	$scope.removeChecked = function () {
