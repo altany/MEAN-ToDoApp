@@ -37,7 +37,6 @@ todoController.service('tasksService', function ($http) {
                 return tasks[i];
             }
         }
-		return [{}]
     }
 	this.delete = function (id) {
         for (var i in tasks) {
@@ -47,11 +46,12 @@ todoController.service('tasksService', function ($http) {
         }
     }
 	this.save = function (task) {
-        if (task.id == null) {
+		
+		if (task.id === undefined) {
             //if this is new contact, add it in contacts array
             task.id = uid++;
 			task.done = false;
-            tasks.push(task);
+			tasks.push(task);
         } else {
             //for existing contact, find this contact using id
             //and update it.
@@ -61,7 +61,6 @@ todoController.service('tasksService', function ($http) {
                 }
             }
         }
- 
     }
 });
 todoController.controller('TaskListCtrl', function($scope, $filter, $location, $http, tasksService) {
