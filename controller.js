@@ -1,9 +1,10 @@
 'use strict';
+
 var todoController = angular.module('todoController', []);
  
 todoController.service('tasksService', function ($http) {
-	var uid = 4; 
-	var tasks = [
+	var uid = 4,
+	tasks = [
 	   {
 		  "id":1,
 		  "title":"Read Tutorials",
@@ -92,8 +93,16 @@ todoController.controller('TaskListCtrl', function($scope, $filter, $location, $
 			$location.path('/tasks');
 		}
     }
+	
+	$scope.open = function($event) {
+	 
+		$event.preventDefault();
+		$event.stopPropagation();
+
+		$scope.opened = true;
+	 };
   });
-  
+
   angular.module('todoFilters', []).filter('checked', function() {
 	  return function(input) {
 		return input ? 'list-group-item-success' : '';

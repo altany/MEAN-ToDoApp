@@ -1,9 +1,10 @@
  'use strict';
  
  var todoApp = angular.module('todoApp', [
+	'ui.bootstrap',
 	'ngRoute',
 	'todoController',
-	'todoFilters'
+	'todoFilters'	
 ]);
 
 todoApp.config(['$routeProvider',
@@ -21,3 +22,17 @@ todoApp.config(['$routeProvider',
         redirectTo: '/tasks'
       });
   }]);
+
+// Added this directive to solve an issue with formating the datepicker date
+todoApp.directive('datepickerPopup', function (){
+    return {
+        restrict: 'EAC',
+        require: 'ngModel',
+        link: function(scope, element, attr, controller) {
+		  //remove the default formatter from the input directive to prevent conflict
+		  controller.$formatters.shift();
+	  	}
+	}
+});
+
+
