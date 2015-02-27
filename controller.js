@@ -2,7 +2,7 @@
 
 var todoController = angular.module('todoController', []);
  
-todoController.service('tasksService', function ($http) {
+todoController.service('tasksService', function () {
 	var uid = 4,
 	tasks = [
 	   {
@@ -39,8 +39,16 @@ todoController.service('tasksService', function ($http) {
         }
     }
 	this.delete = function (id) {
-        for (var i in tasks) {
+		for (var i in tasks) {
             if (tasks[i].id == id) {
+                tasks.splice(i, 1);
+            }
+        }
+    }
+	
+	this.deleteDone = function () {
+        for (var i in tasks) {
+            if (tasks[i].done == true) {
                 tasks.splice(i, 1);
             }
         }
@@ -78,7 +86,7 @@ todoController.controller('TaskListCtrl', function($scope, $filter, $location, $
 	};
 	
 	$scope.removeChecked = function () {
-		$scope.tasks = $filter('filter')($scope.tasks, {done: false});
+		tasksService.deleteDone();  
 	};
 	
   });
@@ -86,20 +94,23 @@ todoController.controller('TaskListCtrl', function($scope, $filter, $location, $
     $scope.taskId = $routeParams.taskId;
 	$scope.task = tasksService.get($routeParams.taskId);
 	
-	$scope.todoSave = function (form) {
-		if (form.$valid){
-		    tasksService.save($scope.task);
-			$location.path('/tasks');
-		}
-    }
+	/*$scope.checkDupes = function(value){
+		console.log(value);
+	};*/
 	
 	$scope.open = function($event) {
 	 
 		$event.preventDefault();
 		$event.stopPropagation();
-
 		$scope.opened = true;
 	 };
+	  
+	 $scope.todoSave = function (form) {
+		if (form.$valid){
+		    tasksService.save($scope.task);
+			$location.path('/tasks');
+		}
+    }
   });
 
   angular.module('todoFilters', []).filter('checked', function() {
