@@ -1,4 +1,4 @@
-<form id="taskView" name="newTask" ng-submit="todoSave(newTask)">
+<form id="newTask" name="newTask" ng-submit="todoSave(newTask)" novalidate >
 	<div class="form-group">
 		<label for="taskTitle">Title</label>
 		<input type="text" class="form-control" id="taskTitle" ng-model="task.title" ng-required="true" />

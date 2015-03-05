@@ -1,4 +1,12 @@
-#todoWrapper, #taskView{
+#todoWrapper, #newTask{
 	width: 500px;
 	margin: 50px auto;
+}
+
+.ng-invalid.ng-dirty{
+	border-color: #C9302C;
+}
+
+.ng-valid.ng-dirty{
+	border-color: #449D44;
 }
