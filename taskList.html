@@ -7,11 +7,7 @@
 	<div  class="form-inline">
 	<ul class="list-group">
 		<li ng-repeat="task in tasks | orderBy:'done'" class="list-group-item {{task.done | checked}}">
-			<span class="checkbox" title="{{task}}">
-				<input type="checkbox" ng-model="task.done"/>
-				<a href="#/task/{{task.id}}">{{task.title}}</a>
-			</span>
-			<span class="btn btn-danger btn-xs glyphicon glyphicon-remove pull-right" ng-click="todoRemove(task.id)"></span>
+			<task-entry></task-entry>
 		</li>
 	</ul>
 

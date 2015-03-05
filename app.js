@@ -23,6 +23,12 @@ todoApp.config(['$routeProvider',
       });
   }]);
 
+  todoApp.directive('taskEntry', function(){
+	return{
+		restrict: 'E',
+		templateUrl: 'task-entry.html'
+	}
+  });
 // Added this directive to solve an issue with formating the datepicker date
 todoApp.directive('datepickerPopup', function (){
     return {
@@ -34,5 +40,6 @@ todoApp.directive('datepickerPopup', function (){
 	  	}
 	}
 });
+
 
 
