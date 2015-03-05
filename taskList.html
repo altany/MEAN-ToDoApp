@@ -16,7 +16,7 @@
 	</ul>
 
 	<button class="btn btn-success" ng-click="todoAdd()">Add</button>
-	<button class="btn btn-danger pull-right {{ (tasks | filter:{done:true}) | empty}}" ng-click="removeChecked()">Remove checked</button>
+	<button class="btn btn-danger pull-right" ng-class="{disabled:(tasks | filter:{done:true}).length==0}" ng-click="removeChecked()">Remove checked</button>
 	</div>
 
 </div>
