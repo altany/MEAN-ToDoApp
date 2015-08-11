@@ -17,6 +17,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#mongoDB
+/webService/mongoDB/*
+/webService/node_modules/*
+
 # =========================
 # Operating System Files
 # =========================
