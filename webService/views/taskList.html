@@ -1,0 +1,18 @@
+<div id="todoWrapper">
+	<h2>You have 
+	<span ng-show="tasks.length>0">{{(tasks | filter:{done:false}).length}}/{{tasks.length}} unfinished tasks</span>
+		
+	<span ng-hide="tasks.length"> no tasks</span>
+	</h2>
+	<div  class="form-inline">
+	<ul class="list-group">
+		<li ng-repeat="task in tasks | orderBy:'done'" class="list-group-item {{task.done | checked}}">
+			<task-entry></task-entry>
+		</li>
+	</ul>
+
+	<button class="btn btn-success" ng-click="todoAdd()">Add</button>
+	<button class="btn btn-danger pull-right" ng-class="{disabled:(tasks | filter:{done:true}).length==0}" ng-click="removeChecked()">Remove checked</button>
+	</div>
+
+</div>

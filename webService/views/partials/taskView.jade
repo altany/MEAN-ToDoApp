@@ -1,0 +1,16 @@
+form#newTask(name='newTask', ng-submit='todoSave(newTask)', novalidate)
+	.form-group
+		label(for='taskTitle') Title
+		input#taskTitle.form-control(type='text', ng-model='task.title', ng-required='true')
+	.form-group
+		label(for='taskTitle') Deadline
+		p.input-group
+			input.form-control(type='text', datepicker-popup='yyyy-MM-dd' ng-model='task.deadline' is-open='opened' close-text='Close')
+			span.input-group-btn
+				button.btn.btn-default(ng-click='open($event)')
+					i.glyphicon.glyphicon-calendar
+	.form-group
+		label(for='taskLocation') Location
+		input#taskLocation.form-control(type='text', ng-model='task.location')
+		
+	input.btn.btn-success.center-block(type='submit', value='Save')

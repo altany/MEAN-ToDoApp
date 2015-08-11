@@ -1,0 +1,4 @@
+span.checkbox(title='{{task}}')
+	input(type='checkbox', mg-model='task.done')
+	a(ng-click='todoEdit(task._id)') {{task.title}}
+span.btn.btn-danger.btn-xs.glyphicon.glyphicon-remove.pull-right(ng-click='todoRemove(task._id)')
