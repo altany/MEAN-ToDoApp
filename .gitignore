@@ -14,12 +14,16 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# Log files
+*.log
+
 # Windows shortcuts
 *.lnk
 
 #mongoDB
 /webService/mongoDB/*
 /webService/node_modules/*
+/webService/data/*
 
 # =========================
 # Operating System Files
