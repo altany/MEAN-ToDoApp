@@ -1,3 +1,5 @@
+a.btn.btn-info(ng-href='/') Go back to List
+
 form#newTask(name='newTask', ng-submit='todoSave(newTask)', novalidate)
 	.form-group
 		label(for='taskTitle') Title
@@ -12,5 +14,7 @@ form#newTask(name='newTask', ng-submit='todoSave(newTask)', novalidate)
 	.form-group
 		label(for='taskLocation') Location
 		input#taskLocation.form-control(type='text', ng-model='task.location')
-		
+
 	input.btn.btn-success.center-block(type='submit', value='Save')
+	
+	

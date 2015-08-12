@@ -11,36 +11,53 @@ todoController.controller('TaskListCtrl', function($scope, $http, $filter, $loca
 	
 	$scope.todoText = '';
 	
-	$scope.todoEdit = function(id){
-		$location.path('/todo/' + id);
+	$scope.toggleDone = function(id) {
+		
+	}
+	
+	$scope.todoRemove = function (id, index) {
+		$http.delete('/tasks/' + id).
+	success(function(data, status, headers, config) {
+			$scope.tasks.splice(index, 1)
+		});
 	};
 	
-	$scope.todoAdd = function () {
-		$location.path('/todo/new');
-	};
-
-	$scope.todoRemove = function (id) {
-		tasksService.delete({id:id});
-		$scope.tasks = tasksService.query();
-	};
-	
-	$scope.removeChecked = function () {
-		tasksService.deleteDone();  
+	$scope.removeCompleted = function (tasks) {
+		angular.forEach($scope.tasks,function(value,index){
+			if (value.done) {
+				$http.delete('/tasks/' + value._id).
+	success(function(data, status, headers, config) {
+				// Update the view
+					$scope.tasks.splice($scope.tasks.indexOf(value), 1);
+				});
+			}
+		})
 	};
 	
   });
   todoController.controller('TaskViewCtrl', function($scope, $http, $routeParams, $location) {
-    
-	$http.get('/tasks/' + $routeParams.taskId).
+	  
+    $http.get('/tasks/' + $routeParams.taskId).
 	success(function(data, status, headers, config) {
-		console.log(data);
-		//$scope.task = data;
+		$scope.task = data;
     });
-	$scope.task = {};
-	/*$scope.todoSave = function (form) {
+
+	$scope.todoSave = function (form) {
 		if (form.$valid){
-		    tasksService.update($scope.task);
-			$location.path('/tasks');
+			if ($routeParams.taskId=='new') {
+				$http.post('/tasks/new/', $scope.task).
+	success(function(data, status, headers, config) {
+					$location.path('/');
+				});
+			}
+			else {
+				$http.put('/tasks/' + $routeParams.taskId, $scope.task).
+					success(function(data, status, headers, config) {
+					console.log(data, status, headers, config);
+				});
+			}
+			
+		
 		}
     }
 	
@@ -50,7 +67,7 @@ todoController.controller('TaskListCtrl', function($scope, $http, $filter, $loca
 		$event.preventDefault();
 		$event.stopPropagation();
 		$scope.opened = true;
-	 };*/
+	 };
   });
 
   angular.module('todoFilters', []).filter('checked', function() {

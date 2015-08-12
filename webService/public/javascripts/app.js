@@ -16,13 +16,17 @@ todoApp.config(['$routeProvider', '$locationProvider',
 	});
     $routeProvider.
       when('/todolist', {
-        templateUrl: 'partials/taskList',
+        templateUrl: '/partials/taskList',
         controller: 'TaskListCtrl'
       }).
+	  /*when('/todo/', {
+		redirectTo: '/todolist'
+	  }).*/
       when('/todo/:taskId', {
-        templateUrl: 'partials/taskList',
+        templateUrl: '/partials/taskView',
         controller: 'TaskViewCtrl'
       }).
+	 
       otherwise({
         redirectTo: '/todolist'
       });

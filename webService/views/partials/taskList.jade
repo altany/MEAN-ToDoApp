@@ -1,14 +1,12 @@
 div#todoWrapper
-	h2 You have
+	h2 You have 
 		span(ng-show='tasks.length>0') {{(tasks | filter:{done:false}).length}}/{{tasks.length}} unfinished tasks
 		span(ng-hide='tasks.length')  no tasks
 	div.form-inline
 		ul.list-group
-			li(ng-repeat='task in tasks | orderBy:"done"').list-group-item.{{task.done | checked}}
+			li(ng-repeat='task in tasks').list-group-item.{{task.done | checked}}
 				<task-entry></task-entry>
-				
 			
-		button.btn.btn-success(ng-click='todoAdd()') Add
-		button.btn.btn-danger.pull-right(ng-class='{disabled:(tasks | filter:{done:true}).length==0}', ng-click='removeChecked()') Remove checked
+		a.btn.btn-success(ng-href='/todo/new') Add
+		button.btn.btn-danger.pull-right(ng-class='{disabled:(tasks | filter:{done:true}).length==0}', ng-click='removeCompleted()') Remove completed
 
-				
