@@ -51,9 +51,9 @@ todoController.controller('TaskListCtrl', function($scope, $http, $filter, $loca
 				});
 			}
 			else {
-				$http.put('/tasks/' + $routeParams.taskId, $scope.task).
+				$http.put('/tasks/', $scope.task).
 					success(function(data, status, headers, config) {
-					console.log(data, status, headers, config);
+					$location.path('/');
 				});
 			}
 			
