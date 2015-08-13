@@ -71,6 +71,7 @@ router.put('/', function(req, res) {
 			data.location = req.body.location;
 		}
 		
+		data.done = req.body.done;
 
 		db.collection('taskcollection').updateById(req.body._id, 
 		{$set: data},
