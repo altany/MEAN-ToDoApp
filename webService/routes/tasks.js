@@ -55,19 +55,23 @@ router.put('/', function(req, res) {
 	
     var db = req.db;
 	if(!req.body) { return res.send(400); } 
-	
-   req.body.done = req.body.done === true || req.body.done==='true';
 	 db.collection('taskcollection').findById(req.body._id, function(err, result){
 		 
 		if(err) { return res.send(500, err); }
 		  
 		if(!result) { return res.send(404); }
-		var data = {
-			title: req.body.title,
-			deadline: req.body.deadline,
-			location: req.body.location
+		var data = {};
+		if (req.body.title) {
+			data.title = req.body.title;
+		}
+		 if (req.body.deadline) {
+			data.deadline = req.body.deadline;
+		}
+		if (req.body.location) {
+			data.location = req.body.location;
 		}
 		
+
 		db.collection('taskcollection').updateById(req.body._id, 
 		{$set: data},
 		function(errUpd) { 

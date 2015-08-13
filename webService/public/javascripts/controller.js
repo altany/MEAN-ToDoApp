@@ -11,8 +11,12 @@ todoController.controller('TaskListCtrl', function($scope, $http, $filter, $loca
 	
 	$scope.todoText = '';
 	
-	$scope.toggleDone = function(id) {
-		
+	$scope.toggleDone = function(id, checked) {
+		var update = {
+			_id: id,
+			done: checked
+		};
+		$http.put('/tasks/', update);
 	}
 	
 	$scope.todoRemove = function (id, index) {

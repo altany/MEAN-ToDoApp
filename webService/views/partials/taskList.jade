@@ -1,6 +1,9 @@
 div#todoWrapper
 	h2 You have 
-		span(ng-show='tasks.length>0') {{(tasks | filter:{done:false}).length}}/{{tasks.length}} unfinished tasks
+		span(ng-show='tasks.length>0')
+			span(ng-show='(tasks | filter:{done:false}).length') {{(tasks | filter:{done:false}).length}}/{{tasks.length}} 
+			span(ng-hide='(tasks | filter:{done:false}).length') no 
+			| unfinished tasks
 		span(ng-hide='tasks.length')  no tasks
 	div.form-inline
 		ul.list-group

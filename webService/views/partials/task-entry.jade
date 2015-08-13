@@ -1,4 +1,4 @@
 span.checkbox(title='{{task}}')
-	input(type='checkbox', ng-model='task.done', ng-change='toggleDone(task._id)')
+	input(type='checkbox', ng-model='task.done', ng-change='toggleDone(task._id, task.done)')
 	a(ng-href='/todo/{{task._id}}') {{task.title}}
 span.btn.btn-danger.btn-xs.glyphicon.glyphicon-remove.pull-right(ng-click='todoRemove(task._id, $index)')
