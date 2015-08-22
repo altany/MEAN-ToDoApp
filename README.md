@@ -1,4 +1,3 @@
-# ToDoApp-AngularJS
-Creating a ToDo List App in AngularJS
+# A simple restful To-do List app with AngularJS, Node.js, Express and MongoDB
 
-My first contact with AngularJS
+To instal and run this app, this blog is very useful: http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/
