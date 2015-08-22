@@ -50,7 +50,7 @@ todoController.controller('TaskListCtrl', function($scope, $http, $filter, $loca
 		if (form.$valid){
 			if ($routeParams.taskId=='new') {
 				$http.post('/tasks/new/', $scope.task).
-	success(function(data, status, headers, config) {
+				success(function(data, status, headers, config) {
 					$location.path('/');
 				});
 			}
@@ -59,9 +59,7 @@ todoController.controller('TaskListCtrl', function($scope, $http, $filter, $loca
 					success(function(data, status, headers, config) {
 					$location.path('/');
 				});
-			}
-			
-		
+			}		
 		}
     }
 	

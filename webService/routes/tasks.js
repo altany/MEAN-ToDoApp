@@ -58,8 +58,8 @@ router.put('/', function(req, res) {
 	 db.collection('taskcollection').findById(req.body._id, function(err, result){
 		 
 		if(err) { return res.send(500, err); }
-		  
 		if(!result) { return res.send(404); }
+		
 		var data = {};
 		if (req.body.title) {
 			data.title = req.body.title;
