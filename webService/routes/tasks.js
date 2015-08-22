@@ -25,7 +25,7 @@ router.get('/:id', function(req, res) {
  * POST to /tasks/new.
  */
 router.post('/new', function(req, res) {
-	if(!req.body) { return res.send(400); } // 6
+	if(!req.body) { return res.send(400); }
     var db = req.db;
 	req.body.done = false;
     db.collection('taskcollection').insert(req.body, function(err, result){
@@ -53,8 +53,9 @@ module.exports = router;
  */
 router.put('/:id', function(req, res) {
     var db = req.db;
-	if(!req.body) { return res.send(400); } // 6
-   req.body.done = req.body.done === true || req.body.done==='true'; db.collection('taskcollection').findById(req.params.id, function(err, result){
+	if(!req.body) { return res.send(400); }// 6
+   req.body.done = req.body.done === true || req.body.done==='true';
+   db.collection('taskcollection').findById(req.params.id, function(err, result){
 		if(err) { return res.send(500, e); }
 		if(!result) { return res.send(404); }
 		db.collection('taskcollection').updateById(req.params.id, req.body, function(errUpd) { 
