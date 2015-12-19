@@ -1,1 +1,1 @@
-web: node /webService/app.js
+web: node app.js

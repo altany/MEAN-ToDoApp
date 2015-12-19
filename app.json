@@ -1,7 +1,7 @@
 {
   "name": "MEAN To-do App",
   "description": "A to-do list app made with AngularJS, Node.js, Express and MongoDB",
-  "repository": "https://github.com/altany/MEAN-ToDoApp",
+  "repository": "https://github.com/altany/MEAN-ToDoApp/tree/heroku-deploy",
   "logo": "https://raw.githubusercontent.com/altany/MEAN-ToDoApp/master/webService/public/images/icon.jpg",
   "keywords": ["to-do", "node", "express", "angular", "express"]
 }
