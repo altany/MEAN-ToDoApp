@@ -1,7 +1,7 @@
 # MEAN To-do List App
 A simple restful To-do List app with AngularJS, Node.js, Express and MongoDB
 
-###Demo
+### Demo
 To see and play with this app, follow:
 [https://mean-todolist.herokuapp.com](https://mean-todolist.herokuapp.com).
 
